@@ -1,0 +1,100 @@
+body {
+  height: auto;
+  overflow: auto;
+}
+
+form {
+  margin: 40px auto;
+}
+
+input {
+  margin: 10px auto;
+  display: block;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 20px;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-size: 28px;
+  margin: 30px auto;
+}
+
+#canvas-container {
+  width: 100%;
+  text-align: center;
+}
+
+canvas {
+  border: 1px solid #000000;
+  display: inline;
+}
+
+i {
+  display: block;
+  text-align: center;
+  font-family: verdana;
+  font-size: 15px;
+  font-weight: lighter;
+  font-variant: small-caps;
+  letter-spacing: 7px;
+  padding-right: 100px;
+}
+
+em {
+  display: block;
+  text-align: center;
+  font-family: verdana;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+b {
+  display: block;
+  text-align: center;
+  font-family: verdana;
+  font-size: 100px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+table, th, td {
+  width: 40%;
+  font-size: 18px;
+  font-family: verdana;
+  font-variant: small-caps;
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  font-size: 25px;
+}
+
+caption {
+  font-size: 40px;
+  text-decoration: underline;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.centerTable {
+  margin: 0px auto;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 30px auto;
+  display: block;
+}
