@@ -2,13 +2,15 @@
 <html>
 <head>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="register.js"></script>
 </head>
 <body>
-  <form>
+  <form method="post" action="http://localhost:80/user">
     <i>username:</i>
-    <input type="text" name="username" placeholder="choose username"/>
+    <input type="text" name="username" placeholder="choose username" required/>
     <i>password:</i>
-    <input type="password" name="password" placeholder="choose password"/>
+    <input type="password" name="password" placeholder="choose password" required/>
     <input type="submit" value="REGISTER"/>
   </form>
 </body>
