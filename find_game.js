@@ -1,16 +1,15 @@
 $(document).ready(function() {
-  var form = $('#login');
-  form.submit(function(event) {
+  var form = $('#findGame');
+  $('findGame').click(function() {
     event.preventDefault();
     var result = {};
-    $.each(form.serializeArray(), function() {
-      result[this.name] = this.value;});
     $.ajax({
       type: form.attr('method'),
       url: form.attr('action'),
+      headers: {"Authorization": localStorage.getItem('5inaRow_token')},
       dataType: "json",
       contentType: "application/json",
-      data: JSON.stringify(result), // JSON.stringify(form.serializeArray()), // form.serialize(),
+      data: result,
       error: function (jqXHR, exception) {
         if (jqXHR.status == 0) {
             message = "no connection"; }
@@ -33,8 +32,7 @@ $(document).ready(function() {
       } */
     })
     .done(function(data) {
-      alert("You have been successfully registered!")
-      window.location.href = 'login.html';
+      window.location.href = 'game_area.html';
     })
   })
 });

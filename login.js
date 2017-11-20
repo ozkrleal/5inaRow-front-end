@@ -13,11 +13,11 @@ $(document).ready(function() {
       data: JSON.stringify(result), // JSON.stringify(form.serializeArray()), // form.serialize(),
       error: function (jqXHR, exception) {
         if (jqXHR.status == 0) {
-            message = 'no connection'; }
+            message = "no connection"; }
         else if (jqXHR.status == 404) {
-            message = 'requested page not found: 404'; }
+            message = "requested page not found: 404"; }
         else {
-            message = 'uncaught error: ' + jqXHR.responseText; }
+            message = "uncaught error: " + jqXHR.responseText; }
         alert(message);
       }/*,
   	  onFailure: function () {
@@ -33,7 +33,7 @@ $(document).ready(function() {
       } */
     })
     .done(function(data) {
-      window.localStorage.setItem(data.username, data.token);
+      window.localStorage.setItem('5inaRow_token', data.token);
       window.location.href = 'find_game.html';
     })
   })

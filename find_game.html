@@ -2,10 +2,12 @@
 <html>
 <head>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="find_game.js"></script>
 </head>
 <body>
-  <div>
-    <button>FIND GAME</button>
-  </div>
+  <form method="post" action="http://localhost:3100/game">
+    <input type="button" id="findGame" value="FIND GAME"></input>
+  </form>
 </body>
 </html>
