@@ -7,33 +7,7 @@
   <div id="canvas-container">
     <canvas id="canvas" width="600" height="600"/>
   </div>
-  <script>
-    var canvas = document.getElementById("canvas");
-    var context = canvas.getContext("2d");
-    const SIZE = 19;
-    const SPACE = 2;
-    const RADIUS = canvas.width / SIZE / 2 - SPACE;
-    for(var i = 1; i <= 18; i = i + 1)
-    {
-      context.moveTo(i * canvas.width / SIZE, 0);
-      context.lineTo(i * canvas.width / SIZE, canvas.height);
-      context.stroke();
-      context.moveTo(0, i * canvas.width / SIZE);
-      context.lineTo(canvas.height, i * canvas.width / SIZE);
-      context.stroke();
-    }
-    // placing pieces examples:
-    context.beginPath();
-    context.arc(canvas.width / SIZE * 0.5, canvas.height / SIZE * 2.5, RADIUS, 0, 2 * Math.PI, false);
-    context.fillStyle = "green";
-    context.fill();
-    context.stroke();
-    context.beginPath();
-    context.arc(canvas.width / SIZE * 7.5, canvas.height / SIZE * 12.5, RADIUS, 0, 2 * Math.PI, false);
-    context.fillStyle = "red";
-    context.fill();
-    context.stroke();
-    //
-  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="game_play.js"></script>
 </body>
 </html>

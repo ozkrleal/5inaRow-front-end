@@ -13,11 +13,11 @@ $(document).ready(function() {
       data: JSON.stringify(result), // JSON.stringify(form.serializeArray()), // form.serialize(),
       error: function (jqXHR, exception) {
         if (jqXHR.status == 0) {
-            message = "no connection"; }
+          message = "no connection"; }
         else if (jqXHR.status == 404) {
-            message = "requested page not found: 404"; }
+          message = "requested page not found: 404"; }
         else {
-            message = "uncaught error: " + jqXHR.responseText; }
+          message = "uncaught error: " + jqXHR.responseText; }
         alert(message);
       }/*,
   	  onFailure: function () {
