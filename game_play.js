@@ -19,7 +19,7 @@ $(document).ready(function() {
     context.stroke();
   }
   //
-  // placing sample pieces:
+  /* // placing sample pieces:
   context.beginPath();
   context.arc(context.canvas.width / SIZE * 0.5,
     context.canvas.height / SIZE * 2.5,
@@ -40,37 +40,34 @@ $(document).ready(function() {
   context.fillStyle = "red";
   context.fill();
   context.stroke();
-  //
+  // */
   canvas.click(function(event) {
     var x = Math.floor(event.offsetX * SIZE / context.canvas.width);
-    var y = Math.floor(event.offsetY * SIZE / context.canvas.height)
+    var y = Math.floor(event.offsetY * SIZE / context.canvas.height);
+    var gameid = localStorage.getItem('5inaRow_gameid');
+    var username = localStorage.getItem('5inaRow_username');
     alert(x + ", " + y);
     $.ajax({
-      type: "post",
-      url: "http://localhost:3100/game",
+      type: "put",
+      url: "http://localhost:3100/game/update",
       headers: {"Authorization": localStorage.getItem('5inaRow_token')},
       dataType: "json",
       contentType: "application/json",
       data: {
+        gameid: gameid,
+        username: username,
         x: x,
         y: y
       },
       error: function (jqXHR, exception) {
         if (jqXHR.status == 0) {
-          /* // place piece test:
-          context.beginPath();
-          context.arc(x * context.canvas.width / SIZE + context.canvas.height / SIZE / 2,
-            y * context.canvas.height / SIZE + context.canvas.height / SIZE / 2,
-            RADIUS,
-            0,
-            2 * Math.PI,
-            false);
-          context.fillStyle = "green";
-          context.fill();
-          context.stroke(); */
           message = "no connection"; }
         else if (jqXHR.status == 404) {
           message = "requested page not found: 404"; }
+        else if (jqXHR.status == 401) {
+          message = jqXHR.responseText + ": " + jqXHR.status; }
+        else if (jqXHR.status == 502) {
+          message = jqXHR.responseText + ": " + jqXHR.status; }
         else {
           message = "uncaught error: " + jqXHR.responseText; }
         alert(message);
@@ -96,7 +93,7 @@ $(document).ready(function() {
         0,
         2 * Math.PI,
         false);
-      context.fillStyle = "green";
+      context.fillStyle = "blue";
       context.fill();
       context.stroke();
     })

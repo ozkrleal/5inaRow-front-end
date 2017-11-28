@@ -16,6 +16,10 @@ $(document).ready(function() {
           message = "no connection"; }
         else if (jqXHR.status == 404) {
           message = "requested page not found: 404"; }
+        else if (jqXHR.status == 400) {
+          message = jqXHR.responseText + ": " + jqXHR.status; }
+        else if (jqXHR.status == 502) {
+          message = jqXHR.responseText + ": " + jqXHR.status; }
         else {
           message = "uncaught error: " + jqXHR.responseText; }
         alert(message);
@@ -34,6 +38,7 @@ $(document).ready(function() {
     })
     .done(function(data) {
       window.localStorage.setItem('5inaRow_token', data.token);
+      window.localStorage.setItem('5inaRow_username', data.username);
       window.location.href = 'find_game.html';
     })
   })
