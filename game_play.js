@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  var canvas = $('#canvas');
+  var canvas = $('#gameArea');
   var context = canvas[0].getContext('2d');
   const SIZE = 19;
   const SPACE = 3;
   const RADIUS = context.canvas.width / SIZE / 2 - SPACE;
-  // drawing board:
+  // drawing the board:
   for(var i = 1; i <= 18; i = i + 1)
   {
     context.moveTo(i * context.canvas.width / SIZE,
@@ -58,20 +58,25 @@ $(document).ready(function() {
         username: username,
         x: x,
         y: y
-      },
-      error: function (jqXHR, exception) {
-        if (jqXHR.status == 0) {
+      } /*,
+      error: function (jqXHR, statusText, error) {
+        var code = jqXHR.status;
+        if (code == 0) {
           message = "no connection"; }
-        else if (jqXHR.status == 404) {
-          message = "requested page not found: 404"; }
-        else if (jqXHR.status == 401) {
-          message = jqXHR.responseText + ": " + jqXHR.status; }
-        else if (jqXHR.status == 502) {
-          message = jqXHR.responseText + ": " + jqXHR.status; }
+        else if (code == 404) {
+          message = "requested page not found: " + code; }
+        else if (code == 403) {
+          message = jqXHR.responseJSON.msg + ": " + code; }
+        else if (code == 498) {
+          message = jqXHR.responseJSON.msg + ": " + code; }
+        else if (code == 499) {
+          message = jqXHR.responseJSON.msg + ": " + code; }
+        else if (code == 502) {
+          message = jqXHR.responseJSON.msg + ": " + code; }
         else {
           message = "uncaught error: " + jqXHR.responseText; }
         alert(message);
-      }/*,
+      } /*,
   	  onFailure: function () {
         alert("Ajax failure");
   	  },
@@ -96,6 +101,24 @@ $(document).ready(function() {
       context.fillStyle = "blue";
       context.fill();
       context.stroke();
+    })
+    .fail(function (jqXHR, statusText, error) {
+      var code = jqXHR.status;
+      if (code == 0) {
+        message = "no connection"; }
+      else if (code == 404) {
+        message = "requested page not found: " + code; }
+      else if (code == 403) {
+        message = jqXHR.responseJSON.msg + ": " + code; }
+      else if (code == 498) {
+        message = jqXHR.responseJSON.msg + ": " + code; }
+      else if (code == 499) {
+        message = jqXHR.responseJSON.msg + ": " + code; }
+      else if (code == 502) {
+        message = jqXHR.responseJSON.msg + ": " + code; }
+      else {
+        message = "uncaught error: " + jqXHR.responseText; }
+      alert(message);
     })
   })
 });
