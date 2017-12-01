@@ -1,0 +1,4 @@
+<div>
+  5inaRow
+  <div id="log_out" onclick="logOut()">LOG OUT</div>
+</div>

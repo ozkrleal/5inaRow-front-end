@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var form = $('#findGame');
-  form.click(function() {
+  form.click(function(event) {
     event.preventDefault();
     var result = {};
     var handle201 = function(data, textStatus, jqXHR) {
@@ -15,38 +15,7 @@ $(document).ready(function() {
       data: result,
       statusCode: {
         201: handle201
-      } /*,
-      error: function (jqXHR, statusText, error) {
-        var code = jqXHR.status;
-        if (code == 0) {
-          message = "no connection"; }
-        else if (code == 404) {
-          message = "requested page not found: " + code; }
-        else if (code == 403) {
-          message = jqXHR.responseJSON.msg + ": " + code; }
-        else if (code == 408) {
-          message = jqXHR.responseJSON.msg + ": " + code; }
-        else if (code == 498) {
-          message = jqXHR.responseJSON.msg + ": " + code; }
-        else if (code == 499) {
-          message = jqXHR.responseJSON.msg + ": " + code; }
-        else if (code == 502) {
-          message = jqXHR.responseJSON.msg + ": " + code; }
-        else {
-          message = "uncaught error: " + jqXHR.responseText; }
-        alert(message);
-      } /*,
-  	  onFailure: function () {
-        alert("Ajax failure");
-  	  },
-  	  statusCode: {
-        404: function() {
-          alert("missing information");
-        }
-  	  }/*,
-      success: function(response) {
-        // alert(JSON.stringify(response));
-      } */
+      }
     })
     .done(function(data) {
       window.location.href = 'game_area.html';

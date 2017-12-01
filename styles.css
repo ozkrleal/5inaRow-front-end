@@ -3,6 +3,39 @@ body {
   overflow: auto;
 }
 
+#header {
+  height: 100px;
+  text-align: center;
+  background-color: white;
+  color: #4CAF50;
+  font-size: 70px;
+  font-weight: bolder;
+  font-family: verdana;
+  font-variant: small-caps;
+  position: fixed;
+  top: 0;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+}
+
+#log_out {
+  text-align: right;
+  color: red;
+  font-size: 16px;
+  font-family: verdana;
+  font-variant: small-caps;
+  font-weight: normal;
+}
+
+#main-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin-top: 130px;
+  text-align: center;
+}
+
 form {
   margin: 40px auto;
 }
@@ -21,11 +54,6 @@ input[type=submit], input[type=button] {
   color: white;
   font-size: 28px;
   margin: 30px auto;
-}
-
-#canvas-container {
-  width: 100%;
-  text-align: center;
 }
 
 canvas {
@@ -93,7 +121,7 @@ button {
   color: white;
   padding: 15px 32px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   margin: 30px auto;
   display: block;

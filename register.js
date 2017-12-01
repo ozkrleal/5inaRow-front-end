@@ -10,33 +10,7 @@ $(document).ready(function() {
       url: form.attr('action'),
       dataType: "json",
       contentType: "application/json",
-      data: JSON.stringify(result) /*, // JSON.stringify(form.serializeArray()), // form.serialize(),
-      error: function (jqXHR, statusText, error) {
-        if (jqXHR.status == 0) {
-          message = "no connection"; }
-        else if (jqXHR.status == 404) {
-          message = "requested page not found: 404"; }
-        else if (jqXHR.status == 400) {
-          message = jqXHR.responseText + ": " + jqXHR.status; }
-        else if (jqXHR.status == 409) {
-          message = jqXHR.responseText + ": " + jqXHR.status; }
-        else if (jqXHR.status == 502) {
-          message = jqXHR.responseText + ": " + jqXHR.status; }
-        else {
-          message = "uncaught error: " + jqXHR.responseText; }
-        alert(message);
-      } /*,
-  	  onFailure: function () {
-        alert("Ajax failure");
-  	  },
-  	  statusCode: {
-        404: function() {
-          alert("missing information");
-        }
-  	  }/*,
-      success: function(response) {
-        // alert(JSON.stringify(response));
-      } */
+      data: JSON.stringify(result)
     })
     .done(function(data) {
       alert("You have been successfully registered!")
