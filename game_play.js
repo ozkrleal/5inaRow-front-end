@@ -27,7 +27,7 @@ $(document).ready(function() {
     alert(x + ", " + y);
     $.ajax({
       type: "put",
-      url: "https://localhost:3100/api/game/update/",
+      url: "http://localhost:3100/api/game/update/",
       headers: {"Authorization": localStorage.getItem('5inaRow_token')},
       dataType: "json",
       contentType: "application/json",

@@ -4,7 +4,7 @@ $(document).ready(function() {
 function logOut() {
   $.ajax({
     type: "get",
-    url: "https://localhost:3100/api/user/logout/",
+    url: "http://localhost:3100/api/user/logout/",
     headers: {"Authorization": localStorage.getItem('5inaRow_token')}
   })
   .done(function(data) {

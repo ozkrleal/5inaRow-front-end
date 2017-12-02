@@ -15,7 +15,7 @@ $(document).ready(function() {
     })
     .done(function(data) {
       window.localStorage.setItem('5inaRow_token', data.token);
-      window.localStorage.setItem('5inaRow_username', form.elements["username"]);
+      window.localStorage.setItem('5inaRow_username', form.namedItem("username").value);
       window.location.href = 'find_game.html';
     })
     .fail(function (jqXHR, statusText, error) {
