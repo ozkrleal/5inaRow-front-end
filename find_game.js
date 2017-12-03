@@ -30,10 +30,12 @@ $(document).ready(function() {
         message = jqXHR.responseJSON.msg + ": " + code; }
       else if (code == 408) {
         message = jqXHR.responseJSON.msg + ": " + code; }
-      else if (code == 498) {
-        message = jqXHR.responseJSON.msg + ": " + code; }
+      else if (code == 489) {
+        message = jqXHR.responseJSON.msg + ": " + code;
+      window.location.href = 'index.html'; }
       else if (code == 499) {
-        message = jqXHR.responseJSON.msg + ": " + code; }
+        message = jqXHR.responseJSON.msg + ": " + code;
+      window.location.href = 'index.html'; }
       else if (code == 502) {
         message = jqXHR.responseJSON.msg + ": " + code; }
       else {

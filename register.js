@@ -14,7 +14,7 @@ $(document).ready(function() {
     })
     .done(function(data) {
       alert("You have been successfully registered!")
-      window.location.href = 'login.html';
+      window.location.href = 'index.html';
     })
     .fail(function (jqXHR, statusText, error) {
       var code = jqXHR.status;
