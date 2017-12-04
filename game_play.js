@@ -32,7 +32,7 @@ $(document).ready(function() {
       dataType: "json",
       contentType: "application/json",
       data: {
-        gameid: gameid,
+        gameId: gameid,
         column: x,
         row: y
       }
