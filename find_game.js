@@ -13,7 +13,7 @@ $(document).ready(function() {
     })
     .done(function(data) {
       if(data.success == true) {
-        window.localStorage.setItem('5inaRow_gameid', data.gameid);
+        window.localStorage.setItem('5inaRow_gameid', data.gameId);
         window.location.href = 'game_area.html'; }
       else {
         window.location.href = 'find_game.html'; }
