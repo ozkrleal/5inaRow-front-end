@@ -3,9 +3,6 @@ $(document).ready(function() {
   form.click(function(event) {
     event.preventDefault();
     var result = {};
-    var handle201 = function(data, textStatus, jqXHR) {
-     window.localStorage.setItem('5inaRow_gameid', data.gameid);
-    };
     $.ajax({
       type: form.attr('method'),
       url: form.attr('action'),
@@ -13,12 +10,13 @@ $(document).ready(function() {
       dataType: "json",
       contentType: "application/json",
       data: result,
-      statusCode: {
-        201: handle201
-      }
     })
     .done(function(data) {
-      window.location.href = 'game_area.html';
+      if(data.success == true) {
+        window.localStorage.setItem('5inaRow_gameid', data.gameid);
+        window.location.href = 'game_area.html'; }
+      else {
+        window.location.href = 'find_game.html'; }
     })
     .fail(function (jqXHR, statusText, error) {
       var code = jqXHR.status;

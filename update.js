@@ -1,13 +1,17 @@
 $(document).ready(function poll() {
   setTimeout(function() {
+    var gameid = localStorage.getItem('5inaRow_gameid');
     $.ajax({
-      type: "",
-      url: "",
+      type: "get",
+      url: "http://localhost:3100/api/game/poll/",
       headers: {"Authorization": localStorage.getItem('5inaRow_token')},
       dataType: "json",
       contentType: "application/json",
       complete: poll,
-      timeout: 5000
+      timeout: 5000,
+      data: {
+        gameid: gameid,
+      }
     })
     .done(function(data) {
     })
