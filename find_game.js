@@ -9,7 +9,7 @@ $(document).ready(function() {
       headers: {"Authorization": localStorage.getItem('5inaRow_token')},
       dataType: "json",
       contentType: "application/json",
-      data: result,
+      data: result
     })
     .done(function(data) {
       if(data.success == true) {

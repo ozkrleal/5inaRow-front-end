@@ -10,7 +10,7 @@ $(document).ready(function poll() {
       complete: poll,
       timeout: 5000,
       data: {
-        gameid: gameid,
+        "gameId:" gameid
       }
     })
     .done(function(data) {

@@ -32,9 +32,9 @@ $(document).ready(function() {
       dataType: "json",
       contentType: "application/json",
       data: {
-        gameId: gameid,
-        column: x,
-        row: y
+        "gameId": gameid,
+        "column": x,
+        "row": y
       }
     })
     .done(function(data) {
@@ -59,7 +59,7 @@ $(document).ready(function() {
           complete: poll,
           timeout: 5000,
           data: {
-            gameid: gameid,
+            "gameId": gameid
           }
         })
         .done(function(data) {
