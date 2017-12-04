@@ -49,6 +49,7 @@ $(document).ready(function() {
       context.fillStyle = "blue";
       context.fill();
       context.stroke();
+      //
       setTimeout(function() {
         $.ajax({
           type: "get",
@@ -64,17 +65,30 @@ $(document).ready(function() {
         })
         .done(function(data) {
           var code = data.code;
-          /* // break if game over or this player's turn
+          // break if game over or this player's turn
           switch(code)
           {
             case 7:
+              window.location.href = 'game_draw.html';
             case 8:
+              // send to "game_lost.html" or "game_won.html"
             case 9:
+              alert("It is not your turn! Please wait for the other player to make a move.");
             case 10:
-            case 11:
-            case 12:
+              // place piece:
+              context.beginPath();
+              context.arc(x * context.canvas.width / SIZE + context.canvas.height / SIZE / 2,
+                y * context.canvas.height / SIZE + context.canvas.height / SIZE / 2,
+                RADIUS,
+                0,
+                2 * Math.PI,
+                false);
+              context.fillStyle = "red";
+              context.fill();
+              context.stroke();
+              //
+              break;
           }
-          */
         })
         .fail(function (jqXHR, statusText, error) {
           var code = jqXHR.status;
@@ -98,10 +112,10 @@ $(document).ready(function() {
         message = jqXHR.responseJSON.msg + ": " + code; }
       else if (code == 489) {
         message = jqXHR.responseJSON.msg + ": " + code;
-      window.location.href = 'index.html'; }
+        window.location.href = 'index.html'; }
       else if (code == 499) {
         message = jqXHR.responseJSON.msg + ": " + code;
-      window.location.href = 'index.html'; }
+        window.location.href = 'index.html'; }
       else if (code == 502) {
         message = jqXHR.responseJSON.msg + ": " + code; }
       else {
