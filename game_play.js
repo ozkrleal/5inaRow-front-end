@@ -124,21 +124,20 @@ $(document).ready(function() {
     })
     .fail(function (jqXHR, statusText, error) {
       var code = jqXHR.status;
-      var messageCode = jqXHR.responseJSON.code;
       if (code == 0) {
         message = "no connection"; }
       else if (code == 404) {
         message = "requested page not found: " + code; }
       else if (code == 403) {
-        message = messageCode + ": " + code; }
+        message = ": " + code; }
       else if (code == 489) {
-        message = messageCode + ": " + code;
+        message = ": " + code;
         window.location.href = 'index.html'; }
       else if (code == 499) {
-        message = messageCode + ": " + code;
+        message = ": " + code;
         window.location.href = 'index.html'; }
       else if (code == 502) {
-        message = messageCode + ": " + code; }
+        message = ": " + code; }
       else {
         message = "uncaught error: " + jqXHR.responseText; }
       alert(message);

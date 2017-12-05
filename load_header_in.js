@@ -24,17 +24,17 @@ function logOut() {
     else if (code == 404) {
       message = "requested page not found: " + code; }
     else if (code == 489) {
-      message = jqXHR.responseJSON.msg + ": " + code;
+      message = ": " + code;
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
       window.location.href = 'index.html'; }
     else if (code == 499) {
-      message = jqXHR.responseJSON.msg + ": " + code;
+      message = ": " + code;
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
       window.location.href = 'index.html'; }
     else if (code == 502) {
-      message = jqXHR.responseJSON.msg + ": " + code;
+      message = ": " + code;
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
       window.location.href = 'index.html'; }

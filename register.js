@@ -24,11 +24,11 @@ $(document).ready(function() {
       else if (code == 404) {
         message = "requested page not found: " + code; }
       else if (code == 400) {
-        message = jqXHR.responseJSON.msg + ": " + code; }
+        message = ": " + code; }
       else if (code == 409) {
-        message = jqXHR.responseJSON.msg + ": " + code; }
+        message = ": " + code; }
       else if (code == 502) {
-        message = jqXHR.responseJSON.msg + ": " + code; }
+        message = ": " + code; }
       else {
         message = "uncaught error: " + jqXHR.responseText; }
       alert(message);

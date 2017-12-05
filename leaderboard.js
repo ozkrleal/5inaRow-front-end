@@ -23,13 +23,13 @@ $(document).ready(function() {
     else if (code == 404) {
       message = "requested page not found: " + code; }
     else if (code == 489) {
-      message = jqXHR.responseJSON.msg + ": " + code;
-    window.location.href = 'index.html'; }
+      message = ": " + code;
+      window.location.href = 'index.html'; }
     else if (code == 499) {
-      message = jqXHR.responseJSON.msg + ": " + code;
-    window.location.href = 'index.html'; }
+      message = ": " + code;
+      window.location.href = 'index.html'; }
     else if (code == 502) {
-      message = jqXHR.responseJSON.msg + ": " + code; }
+      message = ": " + code; }
     else {
       message = "uncaught error: " + jqXHR.responseText; }
     alert(message);
