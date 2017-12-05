@@ -4,7 +4,8 @@ $(document).ready(function() {
     event.preventDefault();
     var result = {};
     $.each(form.serializeArray(), function() {
-      result[this.name] = this.value;});
+      result[this.name] = this.value;
+    });
     $.ajax({
       type: form.attr('method'),
       url: form.attr('action'),

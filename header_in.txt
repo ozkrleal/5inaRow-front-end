@@ -1,4 +1,4 @@
 <div>
-  5inaRow
+  FIVEinaRow
   <div id="log_out" onclick="logOut()">LOG OUT</div>
 </div>

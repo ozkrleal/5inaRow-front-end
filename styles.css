@@ -3,6 +3,11 @@ body {
   overflow: auto;
 }
 
+iframe {
+  width: 60%;
+  height: 600px;
+}
+
 #header {
   height: 100px;
   text-align: center;
