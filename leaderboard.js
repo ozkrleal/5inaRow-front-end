@@ -7,14 +7,14 @@ $(document).ready(function() {
     contentType: "application/json"
   })
   .done(function(data) {
-      $.each(data, function (i, item) {
-          var row =
-            "<tr>" +
-              "<td>" + item[1] + "</td>" +
-              "<td>" + item[0] + "</td>" +
-            "</tr>";
-          $('#leaderboard').append(row);
-      });
+    var response = JSON.parse(data);
+    for(var i = 0; i < response.length; i = i + 1) {
+      var row =
+        "<tr>" +
+          "<td>" + response[i].username + "</td>" +
+          "<td>" + response[i].score + "</td>" +
+        "</tr>";
+      $('#leaderboard').append(row); }
   })
   .fail(function (jqXHR, statusText, error) {
     var code = jqXHR.status;
@@ -31,7 +31,7 @@ $(document).ready(function() {
     else if (code == 502) {
       message = ": " + code; }
     else {
-      message = "uncaught error: " + jqXHR.responseText; }
+      message = "uncaught error: " + message; }
     alert(message);
   })
 });
