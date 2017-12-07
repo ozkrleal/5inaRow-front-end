@@ -21,71 +21,65 @@ $(document).ready(function() {
   //
   var gameid = localStorage.getItem('5inaRow_gameid');
   // var username = localStorage.getItem('5inaRow_username');
-  var objectPoll = {};
   var objectUpdate = {};
-  function poll() {
-    var timeout = setTimeout(function() {
-      objectPoll["gameId"] = gameid;
-      $.ajax({
-        type: "get",
-        url: "http://localhost:3100/api/game/poll/",
-        headers: {"Authorization": localStorage.getItem('5inaRow_token')},
-        dataType: "json",
-        contentType: "application/json",
-        timeout: 5000,
-        data: JSON.stringify(objectPoll)
-      })
-      .done(function(data) {
-        var code = data.code;
-        switch(code) {
-          case 4:
-            logout();
-            clearTimeout(timeout);
-            break;
-          case 7:
-            window.location.href = 'game_draw.html';
-            clearTimeout(timeout);
-            break;
-          case 8:
-            window.location.href = 'game_lost.html';
-            clearTimeout(timeout);
-            break;
-          case 9:
-            alert("It is not your turn; please wait for the other player to make a move!");
-            break;
-          case 10:
-            if(data.column >= 0 && data.row >= 0) {
-              // place piece:
-              context.beginPath();
-              context.arc(data.column * context.canvas.width / SIZE + context.canvas.height / SIZE / 2,
-                data.row * context.canvas.height / SIZE + context.canvas.height / SIZE / 2,
-                RADIUS,
-                0,
-                2 * Math.PI,
-                false);
-              context.fillStyle = "red";
-              context.fill();
-              context.stroke();
-              //
-            }
-            alert("It is your turn; please make a move!");
-            clearTimeout(timeout);
-            break;
-        }
-      })
-      .fail(function (jqXHR, statusText, error) {
-        var code = jqXHR.status;
-        if (code == 0) {
-          message = "no connection"; }
-        else if (code == 404) {
-          message = "requested page not found: " + code; }
-        else {
-          message = "uncaught error: " + jqXHR.responseText; }
-        alert(message);
-      })
-    }, 500);
-  };
-  poll();
+  var timeout = setTimeout(function() {
+    $.ajax({
+      type: "get",
+      url: "http://localhost:3100/api/game/poll/" + gameid,
+      headers: {"Authorization": localStorage.getItem('5inaRow_token')},
+      dataType: "json",
+      contentType: "application/json",
+      timeout: 5000
+    })
+    .done(function(data) {
+      var code = data.code;
+      switch(code) {
+        case 4:
+          logout();
+          clearTimeout(timeout);
+          break;
+        case 7:
+          window.location.href = 'game_draw.html';
+          clearTimeout(timeout);
+          break;
+        case 8:
+          window.location.href = 'game_lost.html';
+          clearTimeout(timeout);
+          break;
+        case 9:
+          // alert("It is not your turn; please wait for the other player to make a move!");
+          break;
+        case 10:
+          if(data.column >= 0 && data.row >= 0) {
+            // place piece:
+            context.beginPath();
+            context.arc(data.column * context.canvas.width / SIZE + context.canvas.height / SIZE / 2,
+              data.row * context.canvas.height / SIZE + context.canvas.height / SIZE / 2,
+              RADIUS,
+              0,
+              2 * Math.PI,
+              false);
+            context.fillStyle = "red";
+            context.fill();
+            context.stroke();
+            //
+          }
+          alert("It is your turn; please make a move!");
+          clearTimeout(timeout);
+          break;
+      }
+    })
+    .fail(function (jqXHR, statusText, error) {
+      var code = jqXHR.status;
+      if (code == 0) {
+        message = "no connection"; }
+      else if (code == 404) {
+        message = "requested page not found: " + code; }
+      else {
+        message = "uncaught error: " + jqXHR.responseText; }
+      alert(message);
+    })
+  }, 500);
   canvas.click(function(event) {
     var x = Math.floor(event.offsetX * SIZE / context.canvas.width);
     var y = Math.floor(event.offsetY * SIZE / context.canvas.height);
@@ -130,7 +124,64 @@ $(document).ready(function() {
           context.stroke();
           //
           alert("It is not your turn any more; please wait for the other player to make a move!");
-          poll();
+          var timeout = setTimeout(function() {
+            $.ajax({
+              type: "get",
+              url: "http://localhost:3100/api/game/poll/" + gameid,
+              headers: {"Authorization": localStorage.getItem('5inaRow_token')},
+              dataType: "json",
+              contentType: "application/json",
+              timeout: 5000
+            })
+            .done(function(data) {
+              var code = data.code;
+              switch(code) {
+                case 4:
+                  logout();
+                  clearTimeout(timeout);
+                  break;
+                case 7:
+                  window.location.href = 'game_draw.html';
+                  clearTimeout(timeout);
+                  break;
+                case 8:
+                  window.location.href = 'game_lost.html';
+                  clearTimeout(timeout);
+                  break;
+                case 9:
+                  // alert("It is not your turn; please wait for the other player to make a move!");
+                  break;
+                case 10:
+                  if(data.column >= 0 && data.row >= 0) {
+                    // place piece:
+                    context.beginPath();
+                    context.arc(data.column * context.canvas.width / SIZE + context.canvas.height / SIZE / 2,
+                      data.row * context.canvas.height / SIZE + context.canvas.height / SIZE / 2,
+                      RADIUS,
+                      0,
+                      2 * Math.PI,
+                      false);
+                    context.fillStyle = "red";
+                    context.fill();
+                    context.stroke();
+                    //
+                  }
+                  alert("It is your turn; please make a move!");
+                  clearTimeout(timeout);
+                  break;
+              }
+            })
+            .fail(function (jqXHR, statusText, error) {
+              var code = jqXHR.status;
+              if (code == 0) {
+                message = "no connection"; }
+              else if (code == 404) {
+                message = "requested page not found: " + code; }
+              else {
+                message = "uncaught error: " + jqXHR.responseText; }
+              alert(message);
+            })
+          }, 500);
           break;
       }
     })
