@@ -23,9 +23,11 @@ $(document).ready(function() {
     else if (code == 404) {
       message = "requested page not found: " + code; }
     else if (code == 401) {
-      message = ": " + code; }
+      message = ": " + code;
+      window.location.href = 'index.html'; }
     else if (code == 403) {
-      message = ": " + code; }
+      message = ": " + code;
+      window.location.href = 'index.html'; }
     else if (code == 489) {
       message = ": " + code;
       window.location.href = 'index.html'; }

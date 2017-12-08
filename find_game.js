@@ -2,6 +2,7 @@ $(document).ready(function() {
   var form = $('#findGame');
   form.click(function(event) {
     event.preventDefault();
+    $('#find_game').prop('disabled', true);
     var result = {};
     $.ajax({
       type: form.attr('method'),
@@ -16,6 +17,7 @@ $(document).ready(function() {
         window.localStorage.setItem('5inaRow_gameid', data.gameId);
         window.location.href = 'game_area.html'; }
       else {
+        $('#find_game').prop('disabled', false);
         alert(data.msg); }
     })
     .fail(function (jqXHR, statusText, error) {
@@ -25,11 +27,14 @@ $(document).ready(function() {
       else if (code == 404) {
         message = "requested page not found: " + code; }
       else if (code == 401) {
-        message = ": " + code; }
+        message = ": " + code;
+        window.location.href = 'index.html'; }
       else if (code == 403) {
-        message = ": " + code; }
+        message = ": " + code;
+        window.location.href = 'index.html'; }
       else if (code == 408) {
-        message = ": " + code; }
+        message = ": " + code;
+        $('#find_game').prop('disabled', false); }
       else if (code == 489) {
         message = ": " + code;
         window.location.href = 'index.html'; }
@@ -37,9 +42,11 @@ $(document).ready(function() {
         message = ": " + code;
         window.location.href = 'index.html'; }
       else if (code == 502) {
-        message = ": " + code; }
+        message = ": " + code;
+        $('#find_game').prop('disabled', false); }
       else {
-        message = "uncaught error: " + jqXHR.responseText; }
+        message = "uncaught error: " + jqXHR.responseText;
+        $('#find_game').prop('disabled', false); }
       alert(message);
     })
   })

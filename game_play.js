@@ -1,6 +1,9 @@
 $(document).ready(function() {
   var canvas = $('#gameArea');
   var context = canvas[0].getContext('2d');
+  var footer = $('#footer');
+  var footerHeight = footer.css('height');
+  footer.css('top', window.innerHeight - parseInt(footerHeight.substring(0, footerHeight.length)) + "px");
   const SIZE = 19;
   const SPACE = 3;
   const RADIUS = context.canvas.width / SIZE / 2 - SPACE;
@@ -22,9 +25,7 @@ $(document).ready(function() {
   var gameid = localStorage.getItem('5inaRow_gameid');
   // var username = localStorage.getItem('5inaRow_username');
   var objectUpdate = {};
-  // alert("right before first setTimeout...");
   var interval = setInterval(function() {
-    // alert("in first setTimeout...");
     $.ajax({
       type: "get",
       url: "http://localhost:3100/api/game/poll/" + gameid,
@@ -49,7 +50,6 @@ $(document).ready(function() {
           clearInterval(interval);
           break;
         case 9:
-          // alert("It is not your turn; please wait for the other player to make a move!");
           break;
         case 10:
           if(data.column >= 0 && data.row >= 0) {
@@ -66,7 +66,8 @@ $(document).ready(function() {
             context.stroke();
             //
           }
-          alert("It is your turn; please make a move!");
+          footer.text("It is your turn; please make a move!");
+          footer.css('background-color', "green");
           clearInterval(interval);
           break;
       }
@@ -74,15 +75,22 @@ $(document).ready(function() {
     .fail(function (jqXHR, statusText, error) {
       var code = jqXHR.status;
       if (code == 0) {
+        footer.text("There is no connection!");
+        footer.css('background-color', "orange");
         message = "no connection"; }
       else if (code == 404) {
         message = "requested page not found: " + code; }
       else if (code == 401) {
-        message = ": " + code; }
+        message = ": " + code;
+        window.location.href = 'index.html'; }
       else if (code == 403) {
-        message = ": " + code; }
+        message = ": " + code;
+        window.location.href = 'index.html'; }
       else if (code == 408) {
         message = ": " + code; }
+      else if (code == 409) {
+        message = ": " + code;
+        window.location.href = 'find_game.html'; }
       else if (code == 489) {
         message = ": " + code;
         window.location.href = 'index.html'; }
@@ -97,7 +105,6 @@ $(document).ready(function() {
     })
   }, 500);
   canvas.click(function(event) {
-    // alert("in click...");
     var x = Math.floor(event.offsetX * SIZE / context.canvas.width);
     var y = Math.floor(event.offsetY * SIZE / context.canvas.height);
     // alert(x + ", " + y);
@@ -125,7 +132,8 @@ $(document).ready(function() {
           window.location.href = 'game_won.html';
           break;
         case 9:
-          alert("It is not your turn! Please wait for the other player to make a move.");
+          footer.text("It is not your turn! Please wait for the other player to make a move.");
+          footer.css('background-color', "red");
           break;
         case 6:
           // place piece:
@@ -140,10 +148,9 @@ $(document).ready(function() {
           context.fill();
           context.stroke();
           //
-          alert("It is not your turn any more; please wait for the other player to make a move!");
-          // alert("right before second setTimeout...");
+          footer.text("It is not your turn! Please wait for the other player to make a move.");
+          footer.css('background-color', "red");
           var interval = setInterval(function() {
-            // alert("in second setTimeout...");
             $.ajax({
               type: "get",
               url: "http://localhost:3100/api/game/poll/" + gameid,
@@ -185,7 +192,8 @@ $(document).ready(function() {
                     context.stroke();
                     //
                   }
-                  alert("It is your turn; please make a move!");
+                  footer.text( "It is your turn; please make a move!");
+                  footer.css('background-color', "green");
                   clearInterval(interval);
                   break;
               }
@@ -193,15 +201,23 @@ $(document).ready(function() {
             .fail(function (jqXHR, statusText, error) {
               var code = jqXHR.status;
               if (code == 0) {
+                footer.text("There is no connection!");
+                footer.css('background-color', "orange");
                 message = "no connection"; }
               else if (code == 404) {
                 message = "requested page not found: " + code; }
               else if (code == 401) {
-                message = ": " + code; }
+                message = ": " + code;
+                window.location.href = 'index.html'; }
               else if (code == 403) {
-                message = ": " + code; }
+                message = ": " + code;
+                window.location.href = 'index.html'; }
               else if (code == 408) {
-                message = ": " + code; }
+                message = ": " + code;
+                window.location.href = 'index.html'; }
+              else if (code == 409) {
+                message = ": " + code;
+                window.location.href = 'find_game.html'; }
               else if (code == 489) {
                 message = ": " + code;
                 window.location.href = 'index.html'; }
@@ -221,13 +237,19 @@ $(document).ready(function() {
     .fail(function (jqXHR, statusText, error) {
       var code = jqXHR.status;
       if (code == 0) {
+        footer.text("There is no connection!");
+        footer.css('background-color', "orange");
         message = "no connection"; }
       else if (code == 404) {
         message = "requested page not found: " + code; }
       else if (code == 401) {
-        message = ": " + code; }
+        message = ": " + code;
+        window.location.href = 'index.html'; }
       else if (code == 403) {
         message = ": " + code; }
+      else if (code == 409) {
+        message = ": " + code;
+        window.location.href = 'find_game.html'; }
       else if (code == 489) {
         message = ": " + code;
         window.location.href = 'index.html'; }

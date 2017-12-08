@@ -24,6 +24,20 @@ iframe {
   bottom: 0;
 }
 
+#footer {
+  height: 45px;
+  text-align: center;
+  color: white;
+  background-color: orange;
+  font-size: 35px;
+  font-family: verdana;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 #log_out {
   text-align: right;
   color: red;
@@ -38,6 +52,15 @@ iframe {
   box-sizing: border-box;
   padding: 0 20px;
   margin-top: 130px;
+  text-align: center;
+}
+
+#main-content_game {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin-top: 130px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
