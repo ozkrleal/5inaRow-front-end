@@ -22,9 +22,9 @@ $(document).ready(function() {
   var gameid = localStorage.getItem('5inaRow_gameid');
   // var username = localStorage.getItem('5inaRow_username');
   var objectUpdate = {};
-  alert("right before first setTimeout...");
-  var timeout = setTimeout(function() {
-    alert("in first setTimeout...");
+  // alert("right before first setTimeout...");
+  var interval = setInterval(function() {
+    // alert("in first setTimeout...");
     $.ajax({
       type: "get",
       url: "http://localhost:3100/api/game/poll/" + gameid,
@@ -38,15 +38,15 @@ $(document).ready(function() {
       switch(code) {
         case 4:
           logout();
-          clearTimeout(timeout);
+          clearInterval(interval);
           break;
         case 7:
           window.location.href = 'game_draw.html';
-          clearTimeout(timeout);
+          clearInterval(interval);
           break;
         case 8:
           window.location.href = 'game_lost.html';
-          clearTimeout(timeout);
+          clearInterval(interval);
           break;
         case 9:
           // alert("It is not your turn; please wait for the other player to make a move!");
@@ -67,7 +67,7 @@ $(document).ready(function() {
             //
           }
           alert("It is your turn; please make a move!");
-          clearTimeout(timeout);
+          clearInterval(interval);
           break;
       }
     })
@@ -97,7 +97,7 @@ $(document).ready(function() {
     })
   }, 500);
   canvas.click(function(event) {
-    alert("in click...");
+    // alert("in click...");
     var x = Math.floor(event.offsetX * SIZE / context.canvas.width);
     var y = Math.floor(event.offsetY * SIZE / context.canvas.height);
     // alert(x + ", " + y);
@@ -141,9 +141,9 @@ $(document).ready(function() {
           context.stroke();
           //
           alert("It is not your turn any more; please wait for the other player to make a move!");
-          alert("right before second setTimeout...");
-          var timeout = setTimeout(function() {
-            alert("in second setTimeout...");
+          // alert("right before second setTimeout...");
+          var interval = setInterval(function() {
+            // alert("in second setTimeout...");
             $.ajax({
               type: "get",
               url: "http://localhost:3100/api/game/poll/" + gameid,
@@ -157,15 +157,15 @@ $(document).ready(function() {
               switch(code) {
                 case 4:
                   logout();
-                  clearTimeout(timeout);
+                  clearInterval(interval);
                   break;
                 case 7:
                   window.location.href = 'game_draw.html';
-                  clearTimeout(timeout);
+                  clearInterval(interval);
                   break;
                 case 8:
                   window.location.href = 'game_lost.html';
-                  clearTimeout(timeout);
+                  clearInterval(interval);
                   break;
                 case 9:
                   // alert("It is not your turn; please wait for the other player to make a move!");
@@ -186,7 +186,7 @@ $(document).ready(function() {
                     //
                   }
                   alert("It is your turn; please make a move!");
-                  clearTimeout(timeout);
+                  clearInterval(interval);
                   break;
               }
             })
