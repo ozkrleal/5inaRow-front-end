@@ -24,6 +24,8 @@ $(document).ready(function() {
         message = "no connection"; }
       else if (code == 404) {
         message = "requested page not found: " + code; }
+      else if (code == 401) {
+        message = ": " + code; }
       else if (code == 403) {
         message = ": " + code; }
       else if (code == 408) {

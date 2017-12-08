@@ -23,21 +23,31 @@ function logOut() {
     }
     else if (code == 404) {
       message = "requested page not found: " + code; }
+    else if (code == 401) {
+      window.localStorage.removeItem('5inaRow_token');
+      window.localStorage.removeItem('5inaRow_username');
+      window.location.href = 'index.html'
+      message = ": " + code; }
+    else if (code == 403) {
+      window.localStorage.removeItem('5inaRow_token');
+      window.localStorage.removeItem('5inaRow_username');
+      window.location.href = 'index.html'
+      message = ": " + code; }
     else if (code == 489) {
-      message = ": " + code;
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
-      window.location.href = 'index.html'; }
+      window.location.href = 'index.html';
+      message = ": " + code; }
     else if (code == 499) {
-      message = ": " + code;
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
-      window.location.href = 'index.html'; }
+      window.location.href = 'index.html';
+      message = ": " + code; }
     else if (code == 502) {
-      message = ": " + code;
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
-      window.location.href = 'index.html'; }
+      window.location.href = 'index.html';
+      message = ": " + code; }
     else {
       message = "uncaught error: " + jqXHR.responseText; }
     alert(message);

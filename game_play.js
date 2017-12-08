@@ -22,7 +22,9 @@ $(document).ready(function() {
   var gameid = localStorage.getItem('5inaRow_gameid');
   // var username = localStorage.getItem('5inaRow_username');
   var objectUpdate = {};
+  alert("right before first setTimeout...");
   var timeout = setTimeout(function() {
+    alert("in first setTimeout...");
     $.ajax({
       type: "get",
       url: "http://localhost:3100/api/game/poll/" + gameid,
@@ -75,12 +77,27 @@ $(document).ready(function() {
         message = "no connection"; }
       else if (code == 404) {
         message = "requested page not found: " + code; }
+      else if (code == 401) {
+        message = ": " + code; }
+      else if (code == 403) {
+        message = ": " + code; }
+      else if (code == 408) {
+        message = ": " + code; }
+      else if (code == 489) {
+        message = ": " + code;
+        window.location.href = 'index.html'; }
+      else if (code == 499) {
+        message = ": " + code;
+        window.location.href = 'index.html'; }
+      else if (code == 502) {
+          message = ": " + code; }
       else {
         message = "uncaught error: " + jqXHR.responseText; }
       alert(message);
     })
   }, 500);
   canvas.click(function(event) {
+    alert("in click...");
     var x = Math.floor(event.offsetX * SIZE / context.canvas.width);
     var y = Math.floor(event.offsetY * SIZE / context.canvas.height);
     // alert(x + ", " + y);
@@ -124,7 +141,9 @@ $(document).ready(function() {
           context.stroke();
           //
           alert("It is not your turn any more; please wait for the other player to make a move!");
+          alert("right before second setTimeout...");
           var timeout = setTimeout(function() {
+            alert("in second setTimeout...");
             $.ajax({
               type: "get",
               url: "http://localhost:3100/api/game/poll/" + gameid,
@@ -177,6 +196,20 @@ $(document).ready(function() {
                 message = "no connection"; }
               else if (code == 404) {
                 message = "requested page not found: " + code; }
+              else if (code == 401) {
+                message = ": " + code; }
+              else if (code == 403) {
+                message = ": " + code; }
+              else if (code == 408) {
+                message = ": " + code; }
+              else if (code == 489) {
+                message = ": " + code;
+                window.location.href = 'index.html'; }
+              else if (code == 499) {
+                message = ": " + code;
+                window.location.href = 'index.html'; }
+              else if (code == 502) {
+                message = ": " + code; }
               else {
                 message = "uncaught error: " + jqXHR.responseText; }
               alert(message);
@@ -191,6 +224,8 @@ $(document).ready(function() {
         message = "no connection"; }
       else if (code == 404) {
         message = "requested page not found: " + code; }
+      else if (code == 401) {
+        message = ": " + code; }
       else if (code == 403) {
         message = ": " + code; }
       else if (code == 489) {
