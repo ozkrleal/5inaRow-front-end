@@ -50,6 +50,8 @@ $(document).ready(function() {
           clearInterval(interval);
           break;
         case 9:
+          footer.text("It is not your turn! Please wait for the other player to make a move.");
+          footer.css('background-color', "red");
           break;
         case 10:
           if(data.column >= 0 && data.row >= 0) {
