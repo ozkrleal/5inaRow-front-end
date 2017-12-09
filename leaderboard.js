@@ -17,11 +17,11 @@ $(document).ready(function() {
           "<th>SCORE<th>" +
         "</tr>";
     leaderboard.html(tableText);
-    for(var i = 0; i < data.length; i = i + 1) {
+    for(var i = 0; i < data.msg.length; i = i + 1) {
       var row =
         "<tr>" +
-          "<td>" + data[i].username + "</td>" +
-          "<td>" + data[i].score + "</td>" +
+          "<td>" + data.msg[i].username + "</td>" +
+          "<td>" + data.msg[i].score + "</td>" +
         "</tr>";
       leaderboard.append(row); }
   })
