@@ -7,7 +7,7 @@ $(document).ready(function() {
     contentType: "application/json"
   })
   .done(function(data) {
-    var response = JSON.parse(data);
+    var response = JSON.parse(JSON.stringify(data));
     for(var i = 0; i < response.length; i = i + 1) {
       var row =
         "<tr>" +

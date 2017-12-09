@@ -2,7 +2,6 @@ $(document).ready(function() {
   var form = $('#findGame');
   form.click(function(event) {
     event.preventDefault();
-    $('#find_game').prop('disabled', true);
     var result = {};
     $.ajax({
       type: form.attr('method'),
@@ -23,7 +22,8 @@ $(document).ready(function() {
     .fail(function (jqXHR, statusText, error) {
       var code = jqXHR.status;
       if (code == 0) {
-        message = "no connection"; }
+        message = "no connection";
+        $('#find_game').prop('disabled', false); }
       else if (code == 404) {
         message = "requested page not found: " + code; }
       else if (code == 401) {
