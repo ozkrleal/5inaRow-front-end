@@ -13,8 +13,8 @@ $(document).ready(function() {
     var tableText =
       "<caption>LEADERBOARD</caption>" +
         "<tr>" +
-          "<th>USERNAME<th>" +
-          "<th>SCORE<th>" +
+          "<th>USERNAME</th>" +
+          "<th>SCORE</th>" +
         "</tr>";
     leaderboard.html(tableText);
     for(var i = 0; i < data.msg.length; i = i + 1) {

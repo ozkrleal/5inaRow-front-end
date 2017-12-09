@@ -119,6 +119,7 @@ b {
 }
 
 table, th, td {
+  table-layout: fixed;
   width: 40%;
   font-size: 18px;
   font-family: verdana;
@@ -128,7 +129,12 @@ table, th, td {
 }
 
 th {
+  width: 100%;
   font-size: 25px;
+}
+
+td {
+  width: 100%;
 }
 
 caption {
