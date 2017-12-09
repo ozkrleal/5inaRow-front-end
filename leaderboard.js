@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  var leaderboard = $('#leaderboard');
   var leaderboardError = $('#leaderboard_error');
   $.ajax({
     type: "get",
@@ -9,14 +10,20 @@ $(document).ready(function() {
   })
   .done(function(data) {
     leaderboardError.text("");
-    var response = JSON.parse(JSON.stringify(data));
-    for(var i = 0; i < response.length; i = i + 1) {
+    var tableText =
+      "<caption>LEADERBOARD</caption>" +
+        "<tr>" +
+          "<th>USERNAME<th>" +
+          "<th>SCORE<th>" +
+        "</tr>";
+    leaderboard.html(tableText);
+    for(var i = 0; i < data.length; i = i + 1) {
       var row =
         "<tr>" +
-          "<td>" + response[i].username + "</td>" +
-          "<td>" + response[i].score + "</td>" +
+          "<td>" + data[i].username + "</td>" +
+          "<td>" + data[i].score + "</td>" +
         "</tr>";
-      $('#leaderboard').append(row); }
+      leaderboard.append(row); }
   })
   .fail(function (jqXHR, statusText, error) {
     var code = jqXHR.status;
