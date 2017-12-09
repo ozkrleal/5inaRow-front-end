@@ -50,7 +50,10 @@ $(document).ready(function() {
           window.location.href = 'game_lost.html';
           break;
         case 9:
-          footer.text("It is not your turn! Please wait for the other player to make a move.");
+          if(footer.text() == "It is not your turn! Please wait for the other player to make a move.") {
+            footer.text("It is still not your turn! Please continue to wait for the other player to make a move."); }
+          else {
+            footer.text("It is not your turn! Please wait for the other player to make a move."); }
           footer.css('background-color', "red");
           break;
         case 10:
@@ -79,7 +82,8 @@ $(document).ready(function() {
       if (code == 0) {
         footer.text("There is no connection!");
         footer.css('background-color', "orange");
-        message = "no connection"; }
+        // message = "no connection";
+      }
       else if (code == 404) {
         message = "requested page not found: " + code; }
       else if (code == 401) {
@@ -103,7 +107,8 @@ $(document).ready(function() {
           message = ": " + code; }
       else {
         message = code + ": uncaught error; " + jqXHR.responseText; }
-      alert(message);
+      if(message && message != "") {
+        alert(message); }
     })
   }, 500);
   canvas.click(function(event) {
@@ -205,7 +210,8 @@ $(document).ready(function() {
               if (code == 0) {
                 footer.text("There is no connection!");
                 footer.css('background-color', "orange");
-                message = "no connection"; }
+                // message = "no connection";
+              }
               else if (code == 404) {
                 message = "requested page not found: " + code; }
               else if (code == 401) {
@@ -230,7 +236,8 @@ $(document).ready(function() {
                 message = ": " + code; }
               else {
                 message = code + ": uncaught error; " + jqXHR.responseText; }
-              alert(message);
+              if(message && message != "") {
+                alert(message); }
             })
           }, 500);
           break;

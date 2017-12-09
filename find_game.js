@@ -1,9 +1,11 @@
 $(document).ready(function() {
   var findGame = $('#find_game');
   var gameFindError = $('#game_find_error');
+  var findGameColor = findGame.css('background-color');
   findGame.click(function(event) {
     event.preventDefault();
     findGame.prop('disabled', true);
+    findGame.css('background-color', "gray");
     var result = {};
     $.ajax({
       type: 'post',
@@ -17,9 +19,11 @@ $(document).ready(function() {
       if(data.success == true) {
         window.localStorage.setItem('5inaRow_gameid', data.gameId);
         $('#find_game').prop('disabled', false);
+        findGame.css('background-color', findGameColor);
         window.location.href = 'game_area.html'; }
       else {
         $('#find_game').prop('disabled', false);
+        findGame.css('background-color', findGameColor);
         alert(data.msg); }
     })
     .fail(function (jqXHR, statusText, error) {
@@ -54,6 +58,7 @@ $(document).ready(function() {
         var message = code + ": uncaught error; " + jqXHR.responseText;
         alert(message); }
       findGame.prop('disabled', false);
+      findGame.css('background-color', findGameColor);
       // alert(message);
     })
   })

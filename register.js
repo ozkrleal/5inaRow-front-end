@@ -15,7 +15,6 @@ $(document).ready(function() {
       data: JSON.stringify(result)
     })
     .done(function(data) {
-      alert("here");
       submissionError.text("");
       // alert("You have been successfully registered!")
       window.location.href = 'index.html';
