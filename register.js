@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var form = $('#registration');
-  var submissionError = $('submission_error');
+  var submissionError = $('#submission_error');
   form.submit(function(event) {
     event.preventDefault();
     var result = {};
@@ -15,8 +15,9 @@ $(document).ready(function() {
       data: JSON.stringify(result)
     })
     .done(function(data) {
+      alert("here");
       submissionError.text("");
-      alert("You have been successfully registered!")
+      // alert("You have been successfully registered!")
       window.location.href = 'index.html';
     })
     .fail(function (jqXHR, statusText, error) {

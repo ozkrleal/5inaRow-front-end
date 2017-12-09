@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var findGame = $('#find_game');
+  var gameFindError = $('#game_find_error');
   findGame.click(function(event) {
     event.preventDefault();
     findGame.prop('disabled', true);
@@ -24,7 +25,7 @@ $(document).ready(function() {
     .fail(function (jqXHR, statusText, error) {
       var code = jqXHR.status;
       if (code == 0) {
-        submissionError.text("no connection...");
+        gameFindError.text("no connection...");
         // message = "no connection";
       }
       else if (code == 404) {
@@ -37,7 +38,7 @@ $(document).ready(function() {
         // message = ": " + code;
         window.location.href = 'index.html'; }
       else if (code == 408) {
-        submissionError.text("We could not find a game for you at this time; please try again!");
+        gameFindError.text("We could not find a game for you at this time; please try again!");
         // message = ": " + code;
       }
       else if (code == 489) {

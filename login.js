@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var form = $('#login');
-  var submissionError = $('submission_error');
+  var submissionError = $('#submission_error');
   form.submit(function(event) {
     event.preventDefault();
     var result = {};
