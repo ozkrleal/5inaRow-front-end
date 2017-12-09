@@ -50,8 +50,8 @@ $(document).ready(function() {
           window.location.href = 'game_lost.html';
           break;
         case 9:
-          if(footer.text() == "It is not your turn! Please wait for the other player to make a move.") {
-            footer.text("It is still not your turn! Please continue to wait for the other player to make a move."); }
+          var text = footer.text();
+          if(text == "It is still not your turn! Please continue to wait for the other player to make a move.") {}
           else {
             footer.text("It is not your turn! Please wait for the other player to make a move."); }
           footer.css('background-color', "red");
