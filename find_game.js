@@ -54,6 +54,7 @@ $(document).ready(function() {
         var message = code + ": uncaught error; " + jqXHR.responseText;
         alert(message); }
       findGame.prop('disabled', false);
+      // alert(message);
     })
   })
 });

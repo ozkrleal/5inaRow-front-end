@@ -43,6 +43,7 @@ $(document).ready(function() {
       else {
         var message = code + ": uncaught error; " + jqXHR.responseText;
         alert(message); }
+      // alert(message);
     })
   })
 });

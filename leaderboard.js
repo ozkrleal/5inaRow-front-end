@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  var leaderboardError = $('#leaderboard_error');
   $.ajax({
     type: "get",
     url: "http://localhost:3100/api/highScores/",
@@ -7,6 +8,7 @@ $(document).ready(function() {
     contentType: "application/json"
   })
   .done(function(data) {
+    leaderboard.text("");
     var response = JSON.parse(JSON.stringify(data));
     for(var i = 0; i < response.length; i = i + 1) {
       var row =
@@ -19,25 +21,30 @@ $(document).ready(function() {
   .fail(function (jqXHR, statusText, error) {
     var code = jqXHR.status;
     if (code == 0) {
-      message = "no connection"; }
+      // message = "no connection";
+    }
     else if (code == 404) {
-      message = "requested page not found: " + code; }
+      // message = "requested page not found: " + code;
+    }
     else if (code == 401) {
-      message = ": " + code;
-      window.location.href = 'index.html'; }
+      // message = ": " + code;
+    }
     else if (code == 403) {
-      message = ": " + code;
-      window.location.href = 'index.html'; }
+      // message = ": " + code;
+    }
     else if (code == 489) {
-      message = ": " + code;
-      window.location.href = 'index.html'; }
+      // message = ": " + code;
+    }
     else if (code == 499) {
-      message = ": " + code;
-      window.location.href = 'index.html'; }
+      // message = ": " + code;
+    }
     else if (code == 502) {
-      message = ": " + code; }
+      // message = ": " + code;
+    }
     else {
-      message = code + ": uncaught error; " + message; }
-    alert(message);
+      var message = code + ": uncaught error; " + message;
+      alert(message); }
+    leaderboardError.text("There was a problem loading the leaderboard...");
+    // alert(message);
   })
 });

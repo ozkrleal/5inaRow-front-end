@@ -52,5 +52,6 @@ function logOut() {
     else {
       var message = code + ": uncaught error; " + jqXHR.responseText;
       alert(message); }
+    // alert(message);
   })
 }
