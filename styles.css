@@ -25,11 +25,11 @@ iframe {
 }
 
 #footer {
-  height: 45px;
+  height: 35px;
   text-align: center;
   color: white;
   background-color: orange;
-  font-size: 35px;
+  font-size: 30px;
   font-family: verdana;
   position: fixed;
   top: 0;
@@ -149,7 +149,7 @@ button {
   color: white;
   padding: 15px 32px;
   text-align: center;
-  font-size: 14px;
+  font-size: 28px;
   cursor: pointer;
   margin: 30px auto;
   display: block;
