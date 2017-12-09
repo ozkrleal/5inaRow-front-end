@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var form = $('#registration');
+  var submissionError = $('submission_error');
   form.submit(function(event) {
     event.preventDefault();
     var result = {};
@@ -14,24 +15,33 @@ $(document).ready(function() {
       data: JSON.stringify(result)
     })
     .done(function(data) {
+      submissionError.text("");
       alert("You have been successfully registered!")
       window.location.href = 'index.html';
     })
     .fail(function (jqXHR, statusText, error) {
       var code = jqXHR.status;
       if (code == 0) {
-        message = "no connection"; }
+        submissionError.text("no connection...");
+        // message = "no connection";
+      }
       else if (code == 404) {
-        message = "requested page not found: " + code; }
+        // message = "requested page not found: " + code;
+      }
       else if (code == 400) {
-        message = ": " + code; }
+        submissionError.text("username already exists");
+        // message = ": " + code;
+      }
       else if (code == 409) {
-        message = ": " + code; }
+        submissionError.text("username already exists");
+        // message = ": " + code;
+      }
       else if (code == 502) {
-        message = ": " + code; }
+        // message = ": " + code;
+      }
       else {
-        message = "uncaught error: " + jqXHR.responseText; }
-      alert(message);
+        var message = code + ": uncaught error; " + jqXHR.responseText;
+        alert(message); }
     })
   })
 });

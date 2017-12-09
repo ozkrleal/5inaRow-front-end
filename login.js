@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var form = $('#login');
+  var submissionError = $('submission_error');
   form.submit(function(event) {
     event.preventDefault();
     var result = {};
@@ -14,6 +15,7 @@ $(document).ready(function() {
       data: JSON.stringify(result)
     })
     .done(function(data) {
+      submissionError.text("");
       window.localStorage.setItem('5inaRow_token', data.token);
       window.localStorage.setItem('5inaRow_username', form.find("input[name='username']").val());
       window.location.href = 'find_game.html';
@@ -21,18 +23,27 @@ $(document).ready(function() {
     .fail(function (jqXHR, statusText, error) {
       var code = jqXHR.status;
       if (code == 0) {
-        message = "no connection"; }
+        submissionError.text("no connection...");
+        // message = "no connection";
+      }
       else if (code == 404) {
-        message = "requested page not found: " + code; }
+        // message = "requested page not found: " + code;
+      }
       else if (code == 401) {
-        message = ": " + code; }
+        submissionError.text("incorrect password");
+        // message = ": " + code;
+      }
       else if (code == 403) {
-        message = ": " + code; }
+        submissionError.text("username not found");
+        // message = ": " + code;
+      }
       else if (code == 502) {
-        message = ": " + code; }
+        submissionError.text("incorrect password");
+        // message = ": " + code;
+      }
       else {
-        message = "uncaught error: " + jqXHR.responseText; }
-      alert(message);
+        var message = code + ": uncaught error; " + jqXHR.responseText;
+        alert(message); }
     })
   })
 });

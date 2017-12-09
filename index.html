@@ -9,10 +9,11 @@
   <div id="header"></div>
   <div id="main-content">
     <form id="login" method="post" action="http://localhost:3100/api/user/login/">
-      <i>username:<em></em></i>
+      <i>username:<em id="bad_username"></em></i>
       <input type="text" name="username" placeholder="username" required/>
-      <i>password:<em></em></i>
+      <i>password:<em id="bad_password"></em></i>
       <input type="password" name="password" placeholder="password" required/>
+      <em id="submission_error" style='color: red;'></em>
       <input type="submit" value="LOG IN"/>
     </form>
     <br><br><br>

@@ -37,7 +37,7 @@ $(document).ready(function() {
     else if (code == 502) {
       message = ": " + code; }
     else {
-      message = "uncaught error: " + message; }
+      message = code + ": uncaught error; " + message; }
     alert(message);
   })
 });

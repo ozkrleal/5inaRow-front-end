@@ -38,22 +38,23 @@ $(document).ready(function() {
       var code = data.code;
       switch(code) {
         case 4:
-          logout();
           clearInterval(interval);
+          logout();
           break;
         case 7:
-          window.location.href = 'game_draw.html';
           clearInterval(interval);
+          window.location.href = 'game_draw.html';
           break;
         case 8:
-          window.location.href = 'game_lost.html';
           clearInterval(interval);
+          window.location.href = 'game_lost.html';
           break;
         case 9:
           footer.text("It is not your turn! Please wait for the other player to make a move.");
           footer.css('background-color', "red");
           break;
         case 10:
+          clearInterval(interval);
           if(data.column >= 0 && data.row >= 0) {
             // place piece:
             context.beginPath();
@@ -70,7 +71,6 @@ $(document).ready(function() {
           }
           footer.text("It is your turn; please make a move!");
           footer.css('background-color', "green");
-          clearInterval(interval);
           break;
       }
     })
@@ -102,7 +102,7 @@ $(document).ready(function() {
       else if (code == 502) {
           message = ": " + code; }
       else {
-        message = "uncaught error: " + jqXHR.responseText; }
+        message = code + ": uncaught error; " + jqXHR.responseText; }
       alert(message);
     })
   }, 500);
@@ -165,21 +165,22 @@ $(document).ready(function() {
               var code = data.code;
               switch(code) {
                 case 4:
-                  logout();
                   clearInterval(interval);
+                  logout();
                   break;
                 case 7:
-                  window.location.href = 'game_draw.html';
                   clearInterval(interval);
+                  window.location.href = 'game_draw.html';
                   break;
                 case 8:
-                  window.location.href = 'game_lost.html';
                   clearInterval(interval);
+                  window.location.href = 'game_lost.html';
                   break;
                 case 9:
                   // alert("It is not your turn; please wait for the other player to make a move!");
                   break;
                 case 10:
+                  clearInterval(interval);
                   if(data.column >= 0 && data.row >= 0) {
                     // place piece:
                     context.beginPath();
@@ -196,7 +197,6 @@ $(document).ready(function() {
                   }
                   footer.text( "It is your turn; please make a move!");
                   footer.css('background-color', "green");
-                  clearInterval(interval);
                   break;
               }
             })
@@ -229,7 +229,7 @@ $(document).ready(function() {
               else if (code == 502) {
                 message = ": " + code; }
               else {
-                message = "uncaught error: " + jqXHR.responseText; }
+                message = code + ": uncaught error; " + jqXHR.responseText; }
               alert(message);
             })
           }, 500);
@@ -241,14 +241,18 @@ $(document).ready(function() {
       if (code == 0) {
         footer.text("There is no connection!");
         footer.css('background-color', "orange");
-        message = "no connection"; }
+        // message = "no connection";
+      }
       else if (code == 404) {
         message = "requested page not found: " + code; }
       else if (code == 401) {
         message = ": " + code;
         window.location.href = 'index.html'; }
       else if (code == 403) {
-        message = ": " + code; }
+        footer.text("It is still not your turn! Please continue to wait for the other player to make a move.");
+        footer.css('background-color', "red");
+        // message = ": " + code;
+      }
       else if (code == 409) {
         message = ": " + code;
         window.location.href = 'find_game.html'; }
@@ -261,8 +265,9 @@ $(document).ready(function() {
       else if (code == 502) {
         message = ": " + code; }
       else {
-        message = "uncaught error: " + jqXHR.responseText; }
-      alert(message);
+        message = code + ": uncaught error; " + jqXHR.responseText; }
+      if(message && message != "") {
+        alert(message); }
     })
   })
 });

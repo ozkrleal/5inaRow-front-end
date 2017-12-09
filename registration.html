@@ -8,10 +8,11 @@
   <div id="header"></div>
   <div id="main-content">
     <form id="registration" method="post" action="http://localhost:3100/api/user/">
-      <i>username:<em></em></i>
+      <i>username:</i>
       <input type="text" name="username" placeholder="choose username" required/>
-      <i>password:<em></em></i>
+      <i>password:</i>
       <input type="password" name="password" placeholder="choose password" required/>
+      <em id="submission_error" style='color: red;'></em>
       <input type="submit" value="REGISTER"/>
     </form>
     <br><br><br>
