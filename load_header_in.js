@@ -16,42 +16,41 @@ function logOut() {
   .fail(function (jqXHR, statusText, error) {
     var code = jqXHR.status;
     if (code == 0) {
-      // message = "no connection";
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
+      message = "no connection";
       window.location.href = 'index.html';
     }
     else if (code == 404) {
-      // message = "requested page not found: " + code;
+      message = "requested page not found: " + code;
     }
     else if (code == 401) {
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
-      // message = ": " + code;
+      message = ": " + code;
       window.location.href = 'index.html' }
     else if (code == 403) {
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
-      // message = ": " + code;
+      message = ": " + code;
       window.location.href = 'index.html' }
     else if (code == 489) {
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
-      // message = ": " + code;
+      message = ": " + code;
       window.location.href = 'index.html'; }
     else if (code == 499) {
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
-      // message = ": " + code;
+      message = ": " + code;
       window.location.href = 'index.html'; }
     else if (code == 502) {
       window.localStorage.removeItem('5inaRow_token');
       window.localStorage.removeItem('5inaRow_username');
-      // message = ": " + code;
+      message = ": " + code;
       window.location.href = 'index.html'; }
     else {
-      var message = code + ": uncaught error; " + jqXHR.responseText;
-      alert(message); }
+      message = code + ": uncaught error; " + jqXHR.responseText; }
     // alert(message);
   })
 }

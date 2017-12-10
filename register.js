@@ -23,25 +23,19 @@ $(document).ready(function() {
       var code = jqXHR.status;
       if (code == 0) {
         submissionError.text("no connection...");
-        // message = "no connection";
-      }
+        message = "no connection"; }
       else if (code == 404) {
-        // message = "requested page not found: " + code;
-      }
+        message = "requested page not found: " + code; }
       else if (code == 400) {
         submissionError.text("username already exists");
-        // message = ": " + code;
-      }
+        message = ": " + code; }
       else if (code == 409) {
         submissionError.text("username already exists");
-        // message = ": " + code;
-      }
+        message = ": " + code; }
       else if (code == 502) {
-        // message = ": " + code;
-      }
+        message = ": " + code; }
       else {
-        var message = code + ": uncaught error; " + jqXHR.responseText;
-        alert(message); }
+        message = code + ": uncaught error; " + jqXHR.responseText; }
       // alert(message);
     })
   })

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  const pollTime = 600;
   var canvas = $('#gameArea');
   var context = canvas[0].getContext('2d');
   var footer = $('#footer');
@@ -107,10 +108,9 @@ $(document).ready(function() {
           message = ": " + code; }
       else {
         message = code + ": uncaught error; " + jqXHR.responseText; }
-      if(message && message != "") {
-        alert(message); }
+      // alert(message);
     })
-  }, 500);
+  }, pollTime);
   canvas.click(function(event) {
     var x = Math.floor(event.offsetX * SIZE / context.canvas.width);
     var y = Math.floor(event.offsetY * SIZE / context.canvas.height);
@@ -210,7 +210,7 @@ $(document).ready(function() {
               if (code == 0) {
                 footer.text("There is no connection!");
                 footer.css('background-color', "orange");
-                // message = "no connection";
+                message = "no connection";
               }
               else if (code == 404) {
                 message = "requested page not found: " + code; }
@@ -236,10 +236,9 @@ $(document).ready(function() {
                 message = ": " + code; }
               else {
                 message = code + ": uncaught error; " + jqXHR.responseText; }
-              if(message && message != "") {
-                alert(message); }
+              // alert(message);
             })
-          }, 500);
+          }, pollTime);
           break;
       }
     })
@@ -248,7 +247,7 @@ $(document).ready(function() {
       if (code == 0) {
         footer.text("There is no connection!");
         footer.css('background-color', "orange");
-        // message = "no connection";
+        message = "no connection";
       }
       else if (code == 404) {
         message = "requested page not found: " + code; }
@@ -273,8 +272,7 @@ $(document).ready(function() {
         message = ": " + code; }
       else {
         message = code + ": uncaught error; " + jqXHR.responseText; }
-      if(message && message != "") {
-        alert(message); }
+      // alert(message);
     })
   })
 });
